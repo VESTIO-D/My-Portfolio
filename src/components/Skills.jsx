@@ -34,7 +34,7 @@ function Skills() {
   return (
     <section className="section">
         <div className="container">
-            <h2 className="headline-2">
+            <h2 className="headline-2 reveal-up">
                 Essential tools I use
             </h2>
 
@@ -53,7 +53,8 @@ function Skills() {
                          key={key}
                          imgScr={imgSrc}
                          label={label}
-                         desc={desc}
+                         desc={desc} 
+                         classes={"reveal-up"}
                         ></Skillcard>
                     ))
                 }
