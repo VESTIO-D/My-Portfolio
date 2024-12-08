@@ -17,6 +17,7 @@ import Header from "./components/Header"
 import Hero from "./components/Hero"
 import About from "./components/About"
 import Skills from "./components/Skills"
+import Work from "./components/Work";
 import Contact from "./components/Contact"
 import Footer from "./components/Footer"
 import { element } from "prop-types";
@@ -47,6 +48,7 @@ function App() {
         <Hero></Hero>
         <About></About>
         <Skills></Skills>
+        <Work></Work>
         <Contact></Contact>
         <Footer></Footer>
       </main>
