@@ -12,7 +12,7 @@ function Hero() {
                 <div className="flex items-center gap-3">
                     <figure className="img-box w-9 h-9 rounded-lg">
                         <img
-                         src="/images/printoy.png" 
+                         src="./images/printoy.png" 
                          width={40}
                          height={40}
                          alt="Printoy A S" 
@@ -55,7 +55,7 @@ function Hero() {
                 bg-gradient-to-t from-sky-400 via-25% via-sky-400/40
                  to-65% rounded-[60px] overflow-hidden">
                     <img 
-                    src="/images/ava.png"
+                    src="./images/ava.png"
                     width={656}
                     height={800}
                     alt="Printoy A S" 

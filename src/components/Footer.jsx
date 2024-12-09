@@ -118,7 +118,7 @@ function Footer() {
                  className=""
                  >
                     <img
-                     src="images/logo.png" 
+                     src="./images/logo.png" 
                      width={40} 
                      height={40} 
                      alt="logo" 

@@ -46,7 +46,7 @@ function About() {
                     }
 
                     <img
-                     src="/images/logo.png" 
+                     src="./images/logo.png" 
                      alt="Logo" 
                      className="rounded-xl ml-auto md:w-[40px] md:h-[40px]"
                      width={30}

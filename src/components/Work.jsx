@@ -3,13 +3,13 @@ import ProjectCard from './ProjectCard';
 
 const projects = [
   {
-    imgSrc : "/images/libraryproject.png",
+    imgSrc : "./images/libraryproject.png",
     projectName : "Library Project",
     tags: ['MVC', 'Development', 'Django'],
     links : "https://github.com/VESTIO-D/LibraryProject"
   },
   {
-    imgSrc : "/images/e-commerce.png",
+    imgSrc : "./images/e-commerce.png",
     projectName : "E-Commerce",
     tags: ['MVC', 'Development', 'E-Commerce'],
     links : "https://github.com/VESTIO-D/E-commerce.git"

@@ -5,27 +5,27 @@ function Skills() {
 
     const skillItem = [
         {
-          imgSrc: '/images/css3.svg',
+          imgSrc: './images/css3.svg',
           label: 'CSS',
           desc: 'User Interface'
         },
         {
-            imgSrc: '/images/django.svg',
+            imgSrc: './images/django.svg',
             label: 'django',
             desc: 'Python Framework'
           },
         {
-          imgSrc: '/images/javascript.svg',
+          imgSrc: './images/javascript.svg',
           label: 'JavaScript',
           desc: 'Interaction'
         },
         {
-          imgSrc: '/images/react.svg',
+          imgSrc: './images/react.svg',
           label: 'React',
           desc: 'Framework'
         },
         {
-          imgSrc: '/images/tailwindcss.svg',
+          imgSrc: './images/tailwindcss.svg',
           label: 'TailwindCSS',
           desc: 'User Interface'
         },
