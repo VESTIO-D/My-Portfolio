@@ -8,6 +8,12 @@ const projects = [
     tags: ['MVC', 'Development', 'Django'],
     links : "https://github.com/VESTIO-D/LibraryProject"
   },
+  {
+    imgSrc : "/images/e-commerce.png",
+    projectName : "E-Commerce",
+    tags: ['MVC', 'Development', 'E-Commerce'],
+    links : "https://github.com/VESTIO-D/E-commerce.git"
+  }
 ];
 
 function Work() {
