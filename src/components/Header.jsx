@@ -13,7 +13,7 @@ function Header() {
                 <a href="/" className="logo">
                     <img 
                     className="rounded-xl"
-                    src="/images/logo.png" 
+                    src="./images/logo.png" 
                     width={40} height={40} 
                     alt="Printoy A S" />
                 </a>
