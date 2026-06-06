@@ -52,3 +52,13 @@ prompt
 server.log
 # Skills directory
 /skills/
+# Old portfolio reference
+/portfolio-old/
+# Dev scripts
+/.zscripts/
+# Mini services
+/mini-services/
+# Agent context
+/agent-ctx/
+# Worklog
+worklog.mddownload/

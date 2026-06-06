@@ -203,6 +203,151 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/*
+ * Navbar components (original architecture + glass effect)
+ */
+
+/* Menu button */
+.menu-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  background: rgba(250, 250, 249, 0.1);
+  border-radius: 0.75rem;
+  box-shadow: inset 0 0 0 1px rgba(250, 250, 249, 0.02);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  transition: transform 0.15s, background-color 0.15s;
+}
+
+.menu-btn:hover {
+  background: rgba(250, 250, 249, 0.15);
+}
+
+.menu-btn:active {
+  transform: scale(0.95);
+}
+
+/* Navbar */
+.navbar {
+  position: absolute;
+  top: 100%;
+  margin-top: 0.5rem;
+  right: 0;
+  min-width: 10rem;
+  padding: 0.5rem;
+  /* Glass effect on mobile dropdown */
+  background: rgba(24, 24, 27, 0.7);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  /* Hidden state */
+  transform: scale(0.9);
+  filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  isolation: isolate;
+  transition: opacity 0.3s, transform 0.3s, filter 0.3s;
+  /* Desktop overrides */
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    position: static;
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    opacity: 1;
+    filter: none;
+    visibility: visible;
+    transform: scale(1);
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    min-width: 0;
+    border-radius: 0;
+  }
+}
+
+.navbar.active {
+  opacity: 1;
+  transform: scale(1);
+  filter: none;
+  visibility: visible;
+}
+
+/* Nav link */
+.nav-link {
+  display: grid;
+  align-items: center;
+  height: 2.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  color: rgba(250, 250, 249, 0.5);
+  transition: color 0.15s;
+  border-radius: 0.5rem;
+}
+
+.nav-link:hover {
+  color: #fafaf9;
+}
+
+.nav-link.active {
+  color: #18181b;
+  transition: color 0.5s;
+}
+
+/* Active sliding box */
+.navbar .active-box {
+  position: absolute;
+  background: #fafaf9;
+  border-radius: 0.5rem;
+  z-index: -1;
+  transition: top 0.5s, left 0.5s;
+}
+
+/* Button base */
+.btn {
+  max-width: max-content;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  box-shadow: inset 0 0 0 1px rgba(250, 250, 249, 0.05);
+  transition: background-color 0.15s;
+}
+
+.btn-secondary {
+  background: #fafaf9;
+  color: #18181b;
+}
+
+.btn-secondary:active {
+  background: rgba(250, 250, 249, 0.8);
+}
+
+.btn .material-symbols-rounded {
+  font-size: 18px;
+}
+
+.btn:has(.material-symbols-rounded) {
+  padding-right: 0.75rem;
+}
+
 /* Glow effects */
 .glow-sky {
   box-shadow: 0 0 40px rgba(56, 189, 248, 0.15), 0 0 80px rgba(56, 189, 248, 0.05);

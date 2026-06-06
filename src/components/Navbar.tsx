@@ -1,73 +1,104 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
-
-interface NavItem {
-  label: string;
-  link: string;
-}
+import { useEffect, useRef } from 'react';
 
 interface NavbarProps {
   navOpen: boolean;
-  navItems: NavItem[];
-  activeSection: string;
   onNavClick: () => void;
 }
 
-export default function Navbar({ navOpen, navItems, activeSection, onNavClick }: NavbarProps) {
-  const activeBox = useRef<HTMLDivElement>(null);
-  const navRef = useRef<HTMLElement>(null);
+const navItems = [
+  {
+    label: 'Home',
+    link: '#home',
+    className: 'nav-link active',
+    isInitialActive: true,
+  },
+  {
+    label: 'About',
+    link: '#about',
+    className: 'nav-link',
+    isInitialActive: false,
+  },
+  {
+    label: 'Skills',
+    link: '#skills',
+    className: 'nav-link',
+    isInitialActive: false,
+  },
+  {
+    label: 'Work',
+    link: '#work',
+    className: 'nav-link',
+    isInitialActive: false,
+  },
+  {
+    label: 'Contact',
+    link: '#contact',
+    className: 'nav-link md:hidden',
+    isInitialActive: false,
+  },
+];
+
+function Navbar({ navOpen, onNavClick }: NavbarProps) {
+  const lastActiveLink = useRef<HTMLAnchorElement | null>(null);
+  const activeBox = useRef<HTMLDivElement | null>(null);
+
+  const updateActiveBox = (el: HTMLAnchorElement | null) => {
+    if (!activeBox.current || !el) return;
+    activeBox.current.style.top = el.offsetTop + 'px';
+    activeBox.current.style.left = el.offsetLeft + 'px';
+    activeBox.current.style.width = el.offsetWidth + 'px';
+    activeBox.current.style.height = el.offsetHeight + 'px';
+  };
 
   useEffect(() => {
-    if (!activeBox.current || !navRef.current) return;
-
-    const activeLink = navRef.current.querySelector(`[data-section="${activeSection}"]`) as HTMLElement;
-    if (activeLink && activeBox.current) {
-      activeBox.current.style.top = activeLink.offsetTop + 'px';
-      activeBox.current.style.left = activeLink.offsetLeft + 'px';
-      activeBox.current.style.width = activeLink.offsetWidth + 'px';
-      activeBox.current.style.height = activeLink.offsetHeight + 'px';
+    if (lastActiveLink.current) {
+      updateActiveBox(lastActiveLink.current);
     }
-  }, [activeSection]);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (lastActiveLink.current) {
+        updateActiveBox(lastActiveLink.current);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const activeCurrentLink = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    const target = event.currentTarget;
+    if (lastActiveLink.current) {
+      lastActiveLink.current.classList.remove('active');
+    }
+    target.classList.add('active');
+    lastActiveLink.current = target;
+    updateActiveBox(target);
+    onNavClick();
+  };
 
   return (
-    <motion.nav
-      ref={navRef}
-      className={`
-        absolute top-full mt-2 right-0 min-w-48 p-2 rounded-2xl
-        scale-90 blur-sm opacity-0 invisible
-        transition-[opacity,transform,filter] duration-300
-        md:static md:flex md:items-center md:mt-0 md:opacity-100 md:blur-0 md:visible
-        md:scale-100 md:bg-transparent md:backdrop-blur-none md:border-0 md:min-w-0 md:p-0
-        glass-strong
-        ${navOpen ? '!opacity-100 !scale-100 !blur-0 !visible' : ''}
-      `}
-      initial={false}
-    >
-      {navItems.map(({ label, link }) => {
-        const sectionId = link.replace('#', '');
-        const isActive = activeSection === sectionId;
-        return (
-          <a
-            key={link}
-            href={link}
-            data-section={sectionId}
-            onClick={onNavClick}
-            className={`relative grid items-center h-9 px-4 text-sm font-medium tracking-wide rounded-lg transition-all duration-300 ${
-              isActive
-                ? 'text-zinc-900'
-                : 'text-zinc-400 hover:text-zinc-100'
-            }`}
-          >
-            {label}
-          </a>
-        );
-      })}
-      <div
-        ref={activeBox}
-        className="absolute bg-white rounded-lg -z-10 transition-all duration-500 ease-out hidden md:block"
-      />
-    </motion.nav>
+    <nav className={'navbar' + (navOpen ? ' active' : '')}>
+      {navItems.map(({ label, link, className, isInitialActive }, index) => (
+        <a
+          href={link}
+          key={index}
+          className={className}
+          ref={(el) => {
+            if (isInitialActive && el) {
+              lastActiveLink.current = el;
+            }
+          }}
+          onClick={activeCurrentLink}
+        >
+          {label}
+        </a>
+      ))}
+      <div className="active-box" ref={activeBox} />
+    </nav>
   );
 }
+
+export default Navbar;
