@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Navbar from './Navbar';
 
 function Header() {
@@ -23,9 +23,7 @@ function Header() {
           : 'bg-gradient-to-b from-zinc-900 to-zinc-900/0'
       }`}
     >
-      <div
-        className="max-w-screen-xl w-full mx-auto px-4 flex justify-between items-center md:px-6 md:grid md:grid-cols-[1fr,3fr,1fr]"
-      >
+      <div className="max-w-screen-xl w-full mx-auto px-4 flex justify-between items-center md:px-6 md:grid md:grid-cols-[1fr,3fr,1fr]">
         <h1>
           <a href="#home" className="logo">
             <img
@@ -40,7 +38,7 @@ function Header() {
 
         <div className="relative md:justify-self-center">
           <button
-            className="menu-btn md:hidden"
+            className="menu-btn"
             onClick={() => setNavOpen((prev) => !prev)}
           >
             <span className="material-symbols-rounded">
@@ -53,7 +51,7 @@ function Header() {
 
         <a
           href="#contact"
-          className="btn btn-secondary max-md:hidden md:justify-self-end"
+          className="btn btn-secondary contact-btn-header"
         >
           Contact Me
         </a>
