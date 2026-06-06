@@ -212,6 +212,45 @@
    * Navbar components — original architecture + glass effect
    */
 
+  /* Header inner container: flex on mobile, grid on desktop */
+  .header-inner {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .header-inner {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 3fr 1fr;
+      align-items: center;
+    }
+  }
+
+  /* Logo column: left-aligned */
+  .header-logo {
+    margin: 0;
+  }
+
+  /* Nav column: centered in its grid cell on desktop */
+  .header-nav-wrap {
+    position: relative;
+  }
+
+  @media (min-width: 768px) {
+    .header-nav-wrap {
+      justify-self: center;
+    }
+  }
+
   /* Menu button */
   .menu-btn {
     width: 2.5rem;

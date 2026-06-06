@@ -23,8 +23,8 @@ function Header() {
           : 'bg-gradient-to-b from-zinc-900 to-zinc-900/0'
       }`}
     >
-      <div className="max-w-screen-xl w-full mx-auto px-4 flex justify-between items-center md:px-6 md:grid md:grid-cols-[1fr,3fr,1fr]">
-        <h1>
+      <div className="header-inner">
+        <h1 className="header-logo">
           <a href="#home" className="logo">
             <img
               className="rounded-xl"
@@ -36,7 +36,7 @@ function Header() {
           </a>
         </h1>
 
-        <div className="relative md:justify-self-center">
+        <div className="header-nav-wrap">
           <button
             className="menu-btn"
             onClick={() => setNavOpen((prev) => !prev)}
